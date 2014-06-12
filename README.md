@@ -2,6 +2,8 @@
 
 FitMe is a small javascript library (minimized and gzipped < 1.3KB) that fits one element into another.
 
+[See working examples](http://lmeurs.github.io/fitme/)!
+
 ## Features
 
 1. A child element can A) completely cover or B) perfectly fit into it's parent element;
@@ -9,9 +11,9 @@ FitMe is a small javascript library (minimized and gzipped < 1.3KB) that fits on
 3. Settings can be defined using A) HTML data attributes, B) javascript on initialization or C) the javascipt API;
 4. Because of it's modular structure callbacks can be easily overwritten globally or per instance.
 
-[See working examples](http://lmeurs.github.io/fitme/)!
+## Examples
 
-## Example 1: Simple
+### Example 1: Simple
 
 HTML:
 ```html
@@ -25,7 +27,7 @@ Javascript:
 jQuery('.my-child').fitMe();
 ```
 
-## Example 2: Setting and altering options using data attributes.
+### Example 2: Setting and altering options using data attributes.
 
 HTML:
 ```html
@@ -39,14 +41,14 @@ Javascript:
 jQuery('.my-child').fitMe();
 ```
 
-### Changing settings using data attributes.
+Changing settings using data attributes:
 ```javascript
 jQuery('.my-child')
-  .data('fillmode', 'contain')
+  .data('fillMode', 'contain')
   .trigger('fit-me-update');
 ```
 
-## Example 3: Setting and altering options using the API.
+### Example 3: Setting and altering options using the API.
 
 HTML:
 ```html
@@ -65,7 +67,7 @@ jQuery('.my-child').fitMe({
   });
 ```
 
-### Changing settings using the API.
+Changing settings using the API:
 ```javascript
 var fitMe = jQuery('.my-child').data('fit-me-instance');
 fitMe.set('fillMode', 'contain');
