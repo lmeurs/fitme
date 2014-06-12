@@ -34,7 +34,7 @@
 
 <h2>Example 1: Simple.</h2>
 <div class="my-parent">
-  <img class="my-child" width="1920" height="1080" src="image.jpg" alt="My image" />
+  <img class="my-child" width="1920" height="1080" src="http://i.imgur.com/8NMU5ru.jpg" alt="My image" />
 </div>
 
 <script>
@@ -69,7 +69,7 @@ Fill mode:
 
 <div data-example-2 class="my-parent">
   <div data-example-2 class="my-child" data-fit-me-ratio="1920 / 1080" data-fit-me-focal-point-x="0.4" data-fit-me-focal-point-y="0.6" data-fit-me-fill-mode="cover">
-    <img src="image.jpg" alt="My image" />
+    <img src="http://i.imgur.com/8NMU5ru.jpg" alt="My image" />
   </div>
 </div>
 
@@ -136,7 +136,7 @@ Fill mode:
 
 <div data-example-3 class="my-parent">
   <div data-example-3 class="my-child">
-    <img src="image.jpg" alt="My image" />
+    <img src="http://i.imgur.com/8NMU5ru.jpg" alt="My image" />
   </div>
 </div>
 
@@ -182,76 +182,6 @@ Fill mode:
 
 })(jQuery);
 </script>
-
-
-
-<hr />
-
-
-
-<h2>Example 4: Advanced example using <a href="http://scottjehl.github.io/picturefill/">Picture polyfill</a> for <a href="http://responsiveimages.org/">responsive images</a>.</h2>
-<div data-example-4 data-fit-me-parent class="my-parent">
-  <span data-example-4 data-fit-me-child data-picture data-alt="My image">
-    <span data-src="image.jpg" data-width="1920" data-height="1080" data-focal-point-x="1" data-focal-point-y="1"></span>
-    <span data-media="(max-width: 48em)" data-src="image-cropped.jpg" data-width="650" data-height="768" data-focal-point-x="0" data-focal-point-y="0"></span>
-    <noscript><img src="image.jpg" width="1920" height="1080" alt="-" /></noscript>
-  </span>
-</div>
-
-<script>
-
-/*! Picturefill 1.2.1 - Responsive Images that work today. (and mimic the proposed Picture element with span elements). Author: Scott Jehl, Filament Group, 2012 | License: MIT/GPLv2 */
-(function(e){"use strict";e.picturefill=function(){var t=e.document.getElementsByTagName("span");for(var n=0,r=t.length;n<r;n++){if(t[n].getAttribute("data-picture")!==null){var i=t[n].getElementsByTagName("span"),s=[];for(var o=0,u=i.length;o<u;o++){var a=i[o].getAttribute("data-media");if(!a||e.matchMedia&&e.matchMedia(a).matches){s.push(i[o])}}var f=t[n].getElementsByTagName("img")[0];if(s.length){var l=s.pop();if(!f||f.parentNode.nodeName==="NOSCRIPT"){f=e.document.createElement("img");f.alt=t[n].getAttribute("data-alt")}else if(l===f.parentNode){continue}f.src=l.getAttribute("data-src");l.appendChild(f);f.removeAttribute("width");f.removeAttribute("height")}else if(f){f.parentNode.removeChild(f)}}}};if(e.addEventListener){e.addEventListener("resize",e.picturefill,false);e.addEventListener("DOMContentLoaded",function(){e.picturefill();e.removeEventListener("load",e.picturefill,false)},false);e.addEventListener("load",e.picturefill,false)}else if(e.attachEvent){e.attachEvent("onload",e.picturefill)}})(this);
-
-jQuery(window).load(function(e) {
-
-  // Example 4: Advanced example using picture polyfill for responsive images.
-  var $element = $('[data-example-4][data-fit-me-child]');
-
-  /**
-   * Example: If the child element is or contains a picture polyfill element
-   * (see responsiveimages.org), the dimensions of the containing image might
-   * differ on different screen resolutions. To make sure FitMe uses the right
-   * dimensions, we alter the options on window resize and set
-   * doProcessSettingsBeforeUpdate to TRUE.
-   *
-   * NB: Bind this window resize event before calling FitMe, so this callback is
-   * called first.
-   */
-  $(window).resize(function(e) {
-    updateInstance();
-    setTimeout(updateInstance, 10);
-  });
-
-  // Initialize FitMe with custom parent getter.
-  $element.fitMe({
-    getParent: function() {
-      return this.$child.closest('[data-fit-me-parent]');
-    },
-    readDataAttributes: false,
-  });
-
-  $(window).trigger('resize');
-
-  function updateInstance() {
-    // Get instance.
-    var instance = $element.data('fit-me-instance'),
-      // Get element with width and height data attributes.
-      $elementWithDimensions = $element.find('img').parent(),
-      ratio = $elementWithDimensions.data('width') / $elementWithDimensions.data('height');
-
-    // Set focal points.
-    instance.set('focalPointX', $elementWithDimensions.data('focal-point-x'));
-    instance.set('focalPointY', $elementWithDimensions.data('focal-point-y'));
-
-    // Set ratio.
-    instance.set('ratio', ratio);
-    // instance.update();
-  }
-});
-</script>
-
-
 
       </section>
       <footer>
