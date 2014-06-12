@@ -1,4 +1,4 @@
-/*! FitMe - v0.1 - 2014-06-12
+/*! FitMe - v0.2 - 2014-xx-xx
 * https://github.com/lmeurs/fitme
 * Copyright (c) 2014 Laurens Meurs, wiedes.nl; Licensed MIT */
 
@@ -74,10 +74,10 @@ var FitMe = {
   },
 
   // Check and set CSS properties to make sure we can set dimensions and
-  // positioning of child element.
+  // position of child and element.
   checkCssProperties: function() {
+    this.$child.css('position', 'absolute');
     if (this.$child.css('display') == 'inline') this.$child.css('display', 'block');
-    if (this.$child.css('position') == 'static') this.$child.css('position', 'relative');
     if (this.$parent.css('position') == 'static') this.$parent.css('position', 'relative');
   },
 
@@ -103,9 +103,12 @@ var FitMe = {
 
   // Event callback that is bound to child, parent and window elements.
   updateEventCallback: function(e) {
+    // Get instance, otherwise the timeout callback cannot access it.
+    var instance = e.data.fitMe;
+
     // Update using the fitMe instance which is received through the event's
     // data object.
-    e.data.fitMe.update(true);
+    instance.update(true);
 
     // If addTimeout has been set.
     if (e.data.addTimeout) {
@@ -114,7 +117,7 @@ var FitMe = {
 
       // Update after small timeout.
       this._updateEventCallbackTimeout = setTimeout(function() {
-        e.data.fitMe.update(true);
+        instance.update(true);
       }, 100);
     }
 
