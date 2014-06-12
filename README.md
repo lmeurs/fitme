@@ -9,30 +9,32 @@ FitMe is a small javascript library (minimized and gzipped < 1.3KB) that fits on
 3. Settings can be defined using A) HTML data attributes, B) javascript on initialization or C) the javascipt API;
 4. Because of it's modular structure callbacks can be easily overwritten globally or per instance.
 
+[See working examples](http://lmeurs.github.io/fitme/)!
+
 ## Example 1: Simple
 
-#### HTML:
+HTML:
 ```html
 <div class="my-parent">
   <img class="my-child" width="1920" height="1080" src="image.jpg" alt="My image" />
 </div>
 ```
 
-#### Javascript:
+Javascript:
 ```javascript
 jQuery('.my-child').fitMe();
 ```
 
 ## Example 2: Setting and altering options using data attributes.
 
-#### HTML:
+HTML:
 ```html
 <div class="my-parent">
   <div class="my-child" data-fit-me-ratio="1920 / 1080" data-fit-me-focal-point-x="0.2" data-fit-me-focal-point-y="0.8" data-fit-me-fill-mode="cover">My child element.</div>
 </div>
 ```
 
-#### Javascript:
+Javascript:
 ```javascript
 jQuery('.my-child').fitMe();
 ```
@@ -46,14 +48,14 @@ jQuery('.my-child')
 
 ## Example 3: Setting and altering options using the API.
 
-#### HTML:
+HTML:
 ```html
 <div class="my-parent">
   <div class="my-child">My child element.</div>
 </div>
 ```
 
-#### Javascript:
+Javascript:
 ```javascript
 jQuery('.my-child').fitMe({
     ratio: 1920 / 1080,
