@@ -77,3 +77,7 @@ fitMe.update();
 ## Dependencies
 
 1. [jQuery 1.7+](http://jquery.com/download/)
+
+## Credits and license
+
+Copyright (c) 2014 Laurens Meurs, wiedes.nl; Licensed MIT
