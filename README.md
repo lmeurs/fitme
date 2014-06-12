@@ -1,15 +1,13 @@
 # FitMe!
 
-FitMe is a small javascript library (minimized and gzipped < 1.3KB) that fits one element into another.
-
-[See working examples](http://lmeurs.github.io/fitme/)!
+FitMe is a small javascript library (minimized and gzipped < 1.3KB) that fits one element into another maintaining it's ratio. [See working examples](http://lmeurs.github.io/fitme/)!
 
 ## Features
 
 1. A child element can A) completely cover or B) perfectly fit into it's parent element;
 2. Setting horizontal and vertical focal points allows full control of the child element's alignment;
 3. Settings can be defined using A) HTML data attributes, B) javascript on initialization or C) the javascipt API;
-4. Because of it's modular structure callbacks can be easily overwritten globally or per instance.
+4. Because of it's modular structure callbacks can be easily overwritten on global and instance level.
 
 ## Examples
 
