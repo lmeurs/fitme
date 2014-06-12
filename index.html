@@ -1,79 +1,169 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="stylesheets/demo.css" />
+<script src="//code.jquery.com/jquery-1.7.js"></script> 
+<script src="javascripts /fitme.js"></script>
+</head>
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Fitme : Javascript library to fit a child element into a parent element" />
+<body>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+<h1>Fit me!</h1>
+<p>See <a href="https://github.com/lmeurs/fitme">github.com/lmeurs/fitme</a></p>
 
-    <title>Fitme</title>
-  </head>
 
-  <body>
+<h2>Example 1: Simple.</h2>
+<div class="my-parent">
+  <img class="my-child" width="1920" height="1080" src="http://i.imgur.com/8NMU5ru.jpg" alt="My image" />
+</div>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/lmeurs/fitme">View on GitHub</a>
+<script>
+// Example 1: Simple.
+jQuery('.my-child').fitMe();
+</script>
 
-          <h1 id="project_title">Fitme</h1>
-          <h2 id="project_tagline">Javascript library to fit a child element into a parent element</h2>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/lmeurs/fitme/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/lmeurs/fitme/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+<hr />
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<h2>Example 2: Setting and altering options using data attributes.</h2>
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+Focal point x:
+<select data-example-2 data-focal-point data-focal-point-x>
+  <option>0</option><option>0.1</option><option>0.2</option><option>0.3</option><option selected>0.4</option><option>0.5</option><option>0.6</option><option>0.7</option><option>0.8</option><option>0.9</option><option>1</option>
+</select>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+Focal point y:
+<select data-example-2 data-focal-point data-focal-point-y>
+  <option>0</option><option>0.1</option><option>0.2</option><option>0.3</option><option>0.4</option><option>0.5</option><option selected>0.6</option><option>0.7</option><option>0.8</option><option>0.9</option><option>1</option>
+</select>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+Fill mode:
+<select data-example-2 data-fill-mode>
+  <option>Cover</option><option>Contain</option>
+</select>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<button data-example-2 data-toggle-overflow>Toggle overflow</button>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<div data-example-2 class="my-parent">
+  <div data-example-2 class="my-child" data-fit-me-ratio="1920 / 1080" data-fit-me-focal-point-x="0.4" data-fit-me-focal-point-y="0.6" data-fit-me-fill-mode="cover">
+    <img src="http://i.imgur.com/8NMU5ru.jpg" alt="My image" />
+  </div>
+</div>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<script>
+(function($) {
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+  // Example 2: Setting and altering options using data attributes.
+  var $element = $('.my-child[data-example-2]').fitMe();
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
+  // Change focal point.
+  $('select[data-example-2][data-focal-point]').change(function(e) {
+    var dataAttribute = $(this).is('[data-focal-point-x]') ? 'fit-me-focal-point-x' : 'fit-me-focal-point-y'
+      value = this.value;
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Fitme maintained by <a href="https://github.com/lmeurs">lmeurs</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+    // Set new value and trigger update.
+    $element
+      .data(dataAttribute, value)
+      .trigger('fit-me-update');
+  });
 
-    
+  // Change fill mode.
+  $('select[data-example-2][data-fill-mode]').change(function(e) {
+    var value = this.value.toLowerCase();
 
-  </body>
+    // Set new value and trigger update.
+    $element
+      .data('fit-me-fill-mode', value)
+      .trigger('fit-me-update');
+  });
+
+  // Toggle overflow.
+  $('button[data-example-2][data-toggle-overflow]').click(function(e) {
+    // Set new value and trigger update.
+    $element.parent().toggleClass('show-overflow');
+  });
+
+})(jQuery);
+</script>
+
+
+
+<hr />
+
+
+
+<h2>Example 3: Setting and altering options directly.</h2>
+
+Focal point x:
+<select data-example-3 data-focal-point data-focal-point-x>
+  <option>0</option><option>0.1</option><option>0.2</option><option>0.3</option><option selected>0.4</option><option>0.5</option><option>0.6</option><option>0.7</option><option>0.8</option><option>0.9</option><option>1</option>
+</select>
+
+Focal point y:
+<select data-example-3 data-focal-point data-focal-point-y>
+  <option>0</option><option>0.1</option><option>0.2</option><option>0.3</option><option>0.4</option><option>0.5</option><option selected>0.6</option><option>0.7</option><option>0.8</option><option>0.9</option><option>1</option>
+</select>
+
+Fill mode:
+<select data-example-3 data-fill-mode>
+  <option>Cover</option><option>Contain</option>
+</select>
+
+<button data-example-3 data-toggle-overflow>Toggle overflow</button>
+
+<div data-example-3 class="my-parent">
+  <div data-example-3 class="my-child">
+    <img src="http://i.imgur.com/8NMU5ru.jpg" alt="My image" />
+  </div>
+</div>
+
+<script>
+(function($) {
+
+  // Example 3: Setting and altering options directly.
+  var $element = $('.my-child[data-example-3]').fitMe({
+    ratio: 1920 / 1080,
+    focalPointX: .4,
+    focalPointY: .6,
+    fillMode: 'cover'
+  });
+
+  // Change focal point.
+  $('select[data-example-3][data-focal-point]').change(function(e) {
+    var instance = $element.data('fit-me-instance'),
+      key = $(this).is('[data-focal-point-x]') ? 'focalPointX' : 'focalPointY';
+
+    // Set new value.
+    instance.set(key, this.value);
+
+    // Update.
+    instance.update();
+  });
+
+  // Change fill mode.
+  $('select[data-example-3][data-fill-mode]').change(function(e) {
+    var instance = $element.data('fit-me-instance');
+
+    // Set new value.
+    instance.set('fillMode', this.value.toLowerCase());
+
+    // Update.
+    instance.update();
+  });
+
+  // Toggle overflow.
+  $('button[data-example-3][data-toggle-overflow]').click(function(e) {
+    // Toggle CSS class on parent element.
+    $element.parent().toggleClass('show-overflow');
+  });
+
+})(jQuery);
+</script>
+
+</body>
 </html>
